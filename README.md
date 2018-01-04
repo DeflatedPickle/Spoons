@@ -1,2 +1,2 @@
 # Spoons
-An implementation of Lisp in Python.
+An esoteric language inspired by Lisp.
