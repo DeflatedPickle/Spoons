@@ -101,3 +101,8 @@ ENV/
 .mypy_cache/
 
 .idea/
+SpoonsLexer.py
+SpoonsLexer.tokens
+SpoonsListener.py
+SpoonsParser.py
+Spoons.tokens
