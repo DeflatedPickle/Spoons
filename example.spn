@@ -1,4 +1,5 @@
 # I'm a comment
 (print (str "Hello World!"))
 (print (int 1))
-(print (bool true))
+# (print (bool true))
+(list 1 2 3)
