@@ -23,8 +23,8 @@ if_stmt: STRT_STMT 'if' (boolean) END_STMT;
 
 plus_stmt: STRT_STMT 'add' int_list END_STMT;
 minus_stmt: STRT_STMT 'sub' int_list END_STMT;
-times_stmt: STRT_STMT 'times' int_list END_STMT;
-divide_stmt: STRT_STMT 'divide' int_list END_STMT;
+times_stmt: STRT_STMT 'mul' int_list END_STMT;
+divide_stmt: STRT_STMT 'div' int_list END_STMT;
 
 // Definitions
 

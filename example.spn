@@ -1,5 +1,14 @@
-# I'm a comment
+# Printing
 (print (str "Hello World!"))
 (print (int 1))
-# (print (bool true))
-(list 1 2 3)
+# (print (bool true)) # line 4:13 mismatched input 'true' expecting BOOLEAN
+
+# Lists
+(list (int 1) (int 2) (int 3))
+(print (list (str "Hello") (str " ") (str "World") (str "!")))
+
+# Arithmetic
+(add (list (int 1) (int 2)))
+(sub (list (int 2) (int 1)))
+(mul (list (int 2) (int 2)))
+(div (list (int 2) (int 1)))
