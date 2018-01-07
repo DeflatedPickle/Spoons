@@ -10,10 +10,14 @@ options {
 
 program: code EOF;
 code: line+;
-line: comment; //statement | comment;
+line: statement | COMMENT;
 
-comment: STRT_STMT COMMENT END_STMT;
-//statement:;
+statement: print_stmt;
+print_stmt: STRT_STMT 'print' (string | integer | boolean) END_STMT;
+
+string: STRT_STMT 'str' STRING END_STMT;
+integer: STRT_STMT 'int' NUMBER END_STMT;
+boolean: STRT_STMT 'bool' BOOLEAN END_STMT;
 
 /*
     Lexer Rules
@@ -22,14 +26,14 @@ comment: STRT_STMT COMMENT END_STMT;
 STRT_STMT: '(';
 END_STMT: ')';
 
-COMMENT: 'comment ' ~[\r\n]* -> skip;
+COMMENT: '#' ~[\r\n]* -> skip;
 SPACE: [ \t\r\n] -> skip;
 
 STRING: ["] ~["\r\n]* ["];
 
-LETTERS: ([a-z] | [A-Z])+;
-NUMBERS: [0-9]+;
-BOOLEAN: 'TRUE' | 'FALSE';
+LETTER: ([a-z] | [A-Z])+;
+NUMBER: [0-9]+;
+BOOLEAN: 'true' | 'false';
 ID: [a-z]+;
 
 WS: [ \t\r\n\f]+ -> skip;
