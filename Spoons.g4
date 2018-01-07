@@ -15,9 +15,13 @@ line: statement | definition | COMMENT;
 // Statements
 
 statement: print_stmt |
-           plus_stmt | minus_stmt | times_stmt | divide_stmt;
+           assignment_stmt |
+           plus_stmt | minus_stmt | times_stmt | divide_stmt |
+           minimum_stmt | maximum_stmt;
 
 print_stmt: STRT_STMT 'print' definition END_STMT;
+
+assignment_stmt: STRT_STMT 'set' ID definition END_STMT;
 
 if_stmt: STRT_STMT 'if' (boolean) END_STMT;
 
@@ -25,6 +29,9 @@ plus_stmt: STRT_STMT 'add' int_list END_STMT;
 minus_stmt: STRT_STMT 'sub' int_list END_STMT;
 times_stmt: STRT_STMT 'mul' int_list END_STMT;
 divide_stmt: STRT_STMT 'div' int_list END_STMT;
+
+minimum_stmt: STRT_STMT 'min' int_list END_STMT;
+maximum_stmt: STRT_STMT 'max' int_list END_STMT;
 
 // Definitions
 
