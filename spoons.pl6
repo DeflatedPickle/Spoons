@@ -1,27 +1,33 @@
 my $program = q:to/END/;
-(print
-    (string
-        Hello, World!
-    )
-
-    (integer
-        42
-    )
-)
+(variable (name str) (string Hello, World!))
+(variable (name int) (integer 42))
 END
 
+my %vars of Str;
+
+# TODO: Implement the print-line function in Spoons
 grammar Grammar {
-      rule TOP {
-          <statement>*
-      }
+    rule TOP {
+            <function-call>*
+        }
 
-      rule statement {
-          '(' <argument> (<argument> | <statement>)* ')'
-      }
+    rule function-call {
+        '(' <argument> (<argument> | <function-call>)* ')'
+    }
 
-      token argument {
-          (\w+ <punct>* | \d+)
-      }
+    token argument {
+        <[a..zA..Z0..9.,"'!?-]>+
+    }
 }
 
-say Grammar.parse($program);
+class Actions {
+    method function-call($/) {
+        if ($<argument> eq "variable") {
+            %vars{$0[0]<function-call>[0].Str} = $0[1]<function-call>[0].join;
+        }
+    }
+}
+
+say Grammar.parse($program, actions => Actions.new);
+say "-----";
+say %vars;
